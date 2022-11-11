@@ -54,6 +54,9 @@ jobs:
       contents: none
     runs-on: windows-latest
     needs: build
+    environment:
+      name: production
+      url: https://loaning-bank-api.azurewebsites.net/
 
     steps:
       - name: Download artifact
