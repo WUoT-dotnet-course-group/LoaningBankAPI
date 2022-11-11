@@ -55,7 +55,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: production
+      name: Production
       url: https://loaning-bank-api.azurewebsites.net/
 
     steps:
