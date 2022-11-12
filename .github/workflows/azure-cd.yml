@@ -10,13 +10,10 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: "."
   CONFIGURATION: Release
   DOTNET_VERSION: 6.0.x
-  PROJECT_DIRECTORY: Src
+  PROJECT_DIRECTORY: Src/LoaningBank.WebAPI
 
 concurrency:
   group: build
-
-permissions:
-  contents: read
 
 jobs:
   build:
@@ -33,6 +30,15 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore "${{ env.PROJECT_DIRECTORY }}"
+
+      - name: Pass db credentials
+        working-directory: ${{ env.PROJECT_DIRECTORY }}
+        run: |
+          dotnet user-secrets init
+          dotnet user-secrets set "Database:Server" ${{ secrets.DATABASE_SERVER }}
+          dotnet user-secrets set "Database:Password" ${{ secrets.DATABASE_PASSWORD }}
+          dotnet user-secrets set "Database:DbName" ${{ secrets.DATABASE_DBNAME }}
+          dotnet user-secrets set "Database:Login" ${{ secrets.DATABASE_LOGIN }}
 
       - name: Build
         run: dotnet build "${{ env.PROJECT_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
