@@ -1,13 +1,30 @@
-﻿namespace LoaningBank.Web
+﻿using LoaningBank.DataPersistence;
+using LoaningBank.Domain.Repositories;
+using LoaningBank.DataPersistence.Repositories;
+using Microsoft.EntityFrameworkCore;
+using LoaningBank.Services.Abstract;
+using LoaningBank.Services;
+using ConfigurationManager = LoaningBank.WebAPI.Configuration.ConfigurationManager;
+
+namespace LoaningBank.Web
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        private readonly ConfigurationManager _configManager;
 
-        public Startup(IConfiguration configuration) => Configuration = configuration;
+        public Startup(IConfiguration configuration)
+        {
+            _configManager = new ConfigurationManager(configuration);
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<RepositoryDbContext>(conf =>
+                conf.UseSqlServer(_configManager.DbConnectionString));
+
+            services.AddScoped<IServiceManager, ServiceManager>();
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
+
             services.AddControllers()
                 .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
 
