@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoaningBank.Domain.Entities
+﻿namespace LoaningBank.Domain.Entities
 {
-    public abstract class Inquiry
+    public class Inquiry
     {
-        public Guid Id { get; set; }
+        public Guid ID { get; set; }
         public int LoanValue { get; set; }
         public short NumberOfInstallments { get; set; }
         public DateTime InquireDate { get; set; }
-        public PersonalData PersonalData { get; set; }
+        public PersonalData PersonalData { get; set; } = default!;
+        public Offer? Offer { get; set; }
     }
 }
