@@ -4,23 +4,23 @@ using LoaningBank.DataPersistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using LoaningBank.Services.Abstract;
 using LoaningBank.Services;
-using ConfigurationManager = LoaningBank.WebAPI.Configuration.ConfigurationManager;
+using LoaningBank.WebAPI.Configuration;
 
 namespace LoaningBank.Web
 {
     public class Startup
     {
-        private readonly ConfigurationManager _configManager;
+        private readonly ConfigurationsManager ConfigurationManager;
 
         public Startup(IConfiguration configuration)
         {
-            _configManager = new ConfigurationManager(configuration);
+            ConfigurationManager = new ConfigurationsManager(configuration);
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RepositoryDbContext>(conf =>
-                conf.UseSqlServer(_configManager.DbConnectionString));
+                conf.UseSqlServer(ConfigurationManager.DbConnectionString));
 
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();

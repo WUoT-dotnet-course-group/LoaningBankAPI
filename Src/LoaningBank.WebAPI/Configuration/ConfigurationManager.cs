@@ -1,15 +1,15 @@
 ﻿namespace LoaningBank.WebAPI.Configuration
 {
-    public class ConfigurationManager
+    public class ConfigurationsManager
     {
         private readonly DatabaseConfig _databaseConfig;
 
         public readonly IConfiguration Configuration;
 
-        public ConfigurationManager(IConfiguration configuration)
+        public ConfigurationsManager(IConfiguration configuration)
         {
             Configuration = configuration;
-            _databaseConfig = Configuration.GetSection(DatabaseConfig.SectionName).Get<DatabaseConfig>();
+            _databaseConfig = Configuration.GetRequiredSection(DatabaseConfig.SectionName).Get<DatabaseConfig>();
         }
 
         public string DbConnectionString
