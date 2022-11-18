@@ -10,4 +10,8 @@
     <ProjectReference Include="..\..\LoaningBank.CrossCutting\LoaningBank.CrossCutting.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Update="SonarAnalyzer.CSharp" Version="8.48.0.56517" />
+  </ItemGroup>
+
 </Project>
