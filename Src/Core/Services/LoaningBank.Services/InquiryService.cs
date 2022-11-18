@@ -19,10 +19,11 @@ namespace LoaningBank.Services
             await _repositoryManager.InquiryRepository.Add(inquiryToAdd);
         }
 
-        public async Task<IEnumerable<Guid>> GetAllIds()
+        public async Task<List<GetInquiryDTO>> GetAll()
         {
             var inquiries = await _repositoryManager.InquiryRepository.GetAll();
-            return inquiries.Select(x => x.ID);
+
+            return inquiries.Adapt<List<GetInquiryDTO>>();
         }
     }
 }

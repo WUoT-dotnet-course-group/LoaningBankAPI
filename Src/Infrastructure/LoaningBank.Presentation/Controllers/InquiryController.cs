@@ -20,10 +20,10 @@ namespace LoaningBank.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Guid>> GetAllIds()
+        public async Task<ActionResult<GetInquiryDTO>> GetAll()
         {
-            var result = await _serviceManager.InquiryService.GetAll();
-            return await Task.FromResult(result.Select(x => x.ID).ToList());
+            var inquiries = await _serviceManager.InquiryService.GetAll();
+            return Ok(inquiries);
         }
     }
 }
