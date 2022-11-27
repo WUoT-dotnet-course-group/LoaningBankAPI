@@ -1,25 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aab2c5e8-62a3-45b9-8e27-b6a666139031</UserSecretsId>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>aab2c5e8-62a3-45b9-8e27-b6a666139031</UserSecretsId>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Services\LoaningBank.Services\LoaningBank.Services.csproj" />
-    <ProjectReference Include="..\Infrastructure\LoaningBank.DataPersistence\LoaningBank.DataPersistence.csproj" />
-    <ProjectReference Include="..\Infrastructure\LoaningBank.Presentation\LoaningBank.Presentation.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Core\Services\LoaningBank.Services\LoaningBank.Services.csproj" />
+		<ProjectReference Include="..\Infrastructure\LoaningBank.DataPersistence\LoaningBank.DataPersistence.csproj" />
+		<ProjectReference Include="..\Infrastructure\LoaningBank.Presentation\LoaningBank.Presentation.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Update="SonarAnalyzer.CSharp" Version="8.48.0.56517" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Update="SonarAnalyzer.CSharp" Version="8.48.0.56517" />
+	</ItemGroup>
 
 </Project>

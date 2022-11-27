@@ -1,6 +1,9 @@
-﻿namespace LoaningBank.Services.Abstract
+﻿using LoaningBank.CrossCutting.DTO;
+
+namespace LoaningBank.Services.Abstract
 {
     public interface IOfferService
     {
+        Task Add(AddOfferDTO offer);
     }
 }

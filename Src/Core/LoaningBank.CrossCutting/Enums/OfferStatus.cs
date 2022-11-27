@@ -1,4 +1,4 @@
-﻿namespace LoaningBank.CrossCutting.Enums
+namespace LoaningBank.CrossCutting.Enums
 {
     public enum OfferStatus
     {

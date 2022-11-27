@@ -1,4 +1,4 @@
-﻿namespace LoaningBank.CrossCutting.DTO
+namespace LoaningBank.CrossCutting.DTO
 {
     public class GetInquiryDTO
     {
