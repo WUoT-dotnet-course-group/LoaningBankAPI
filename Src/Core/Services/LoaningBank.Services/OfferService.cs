@@ -20,5 +20,11 @@ namespace LoaningBank.Services
 
             await _repositoryManager.OfferRepository.Add(offerToAdd);
         }
+
+        public async Task<List<GetOfferDTO>> GetAll()
+        {
+            var offers = await _repositoryManager.OfferRepository.GetAll();
+            return offers.Adapt<List<GetOfferDTO>>();
+        }
     }
 }

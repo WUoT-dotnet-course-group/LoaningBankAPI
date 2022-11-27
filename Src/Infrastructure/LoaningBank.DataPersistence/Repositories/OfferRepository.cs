@@ -15,5 +15,7 @@ namespace LoaningBank.DataPersistence.Repositories
             await _dbContext.Offers.AddAsync(offer);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<List<Offer>> GetAll() => await _dbContext.Offers.AsNoTracking().ToListAsync();
     }
 }
