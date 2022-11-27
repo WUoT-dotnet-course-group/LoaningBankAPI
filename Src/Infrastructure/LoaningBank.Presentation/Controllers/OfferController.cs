@@ -18,5 +18,13 @@ namespace LoaningBank.Presentation.Controllers
             await _serviceManager.OfferService.Add(offer);
             return Ok();
         }
+
+        [HttpGet]
+        public async Task<ActionResult<GetOfferDTO>> GetAllIds()
+        {
+            var offers = await _serviceManager.OfferService.GetAll();
+            return Ok(offers);
+        }
+
     }
 }
