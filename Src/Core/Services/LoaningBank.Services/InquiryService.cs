@@ -1,5 +1,8 @@
-﻿using LoaningBank.Domain.Repositories;
+﻿using LoaningBank.CrossCutting.DTO;
+using LoaningBank.Domain.Entities;
+using LoaningBank.Domain.Repositories;
 using LoaningBank.Services.Abstract;
+using Mapster;
 
 namespace LoaningBank.Services
 {
@@ -9,10 +12,18 @@ namespace LoaningBank.Services
 
         public InquiryService(IRepositoryManager repositoryManager) => _repositoryManager = repositoryManager;
 
-        public async Task<IEnumerable<Guid>> GetAllIds()
+        public async Task Add(AddInquiryDTO inquiry)
+        {
+            var inquiryToAdd = inquiry.Adapt<Inquiry>();
+
+            await _repositoryManager.InquiryRepository.Add(inquiryToAdd);
+        }
+
+        public async Task<List<GetInquiryDTO>> GetAll()
         {
             var inquiries = await _repositoryManager.InquiryRepository.GetAll();
-            return inquiries.Select(x => x.ID);
+
+            return inquiries.Adapt<List<GetInquiryDTO>>();
         }
     }
 }

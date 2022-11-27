@@ -1,4 +1,6 @@
-﻿namespace LoaningBank.Domain.Entities
+﻿using LoaningBank.CrossCutting.Enums;
+
+namespace LoaningBank.Domain.Entities
 {
     public class PersonalData
     {

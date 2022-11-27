@@ -1,4 +1,5 @@
-﻿using LoaningBank.Services.Abstract;
+﻿using LoaningBank.CrossCutting.DTO;
+using LoaningBank.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoaningBank.Presentation.Controllers
@@ -11,11 +12,18 @@ namespace LoaningBank.Presentation.Controllers
 
         public InquiryController(IServiceManager serviceManager) => _serviceManager = serviceManager;
 
-        [HttpGet]
-        public async Task<List<Guid>> GetAllIds()
+        [HttpPost("add")]
+        public async Task<ActionResult> Add([FromBody] AddInquiryDTO inquiry)
         {
-            var result = await _serviceManager.InquiryService.GetAllIds();
-            return await Task.FromResult(result.ToList());
+            await _serviceManager.InquiryService.Add(inquiry);
+            return Ok();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<GetInquiryDTO>> GetAll()
+        {
+            var inquiries = await _serviceManager.InquiryService.GetAll();
+            return Ok(inquiries);
         }
     }
 }
