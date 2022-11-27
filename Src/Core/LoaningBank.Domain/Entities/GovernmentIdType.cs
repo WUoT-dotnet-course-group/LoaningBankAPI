@@ -3,7 +3,7 @@
     public enum GovernmentIdType
     {
         PESEL,
-        Id,
+        ID,
         Passport
     }
 }

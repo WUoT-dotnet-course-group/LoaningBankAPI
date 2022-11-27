@@ -10,17 +10,17 @@ namespace LoaningBank.Web
 {
     public class Startup
     {
-        private readonly ConfigurationsManager ConfigurationManager;
+        private readonly ConfigurationsManager ConfigurationsManager;
 
         public Startup(IConfiguration configuration)
         {
-            ConfigurationManager = new ConfigurationsManager(configuration);
+            ConfigurationsManager = new ConfigurationsManager(configuration);
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RepositoryDbContext>(conf =>
-                conf.UseSqlServer(ConfigurationManager.DbConnectionString));
+                conf.UseSqlServer(ConfigurationsManager.DbConnectionString));
 
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();
