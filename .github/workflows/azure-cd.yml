@@ -10,13 +10,10 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: "."
   CONFIGURATION: Release
   DOTNET_VERSION: 6.0.x
-  PROJECT_DIRECTORY: Src
+  PROJECT_DIRECTORY: Src/LoaningBank.WebAPI
 
 concurrency:
   group: build
-
-permissions:
-  contents: read
 
 jobs:
   build:

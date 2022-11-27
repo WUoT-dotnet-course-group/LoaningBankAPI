@@ -1,7 +1,6 @@
 ﻿namespace LoaningBank.Services.Abstract
 {
-    public class Class1
+    public interface IOfferService
     {
-
     }
 }
