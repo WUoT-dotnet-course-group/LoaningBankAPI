@@ -20,7 +20,7 @@ namespace LoaningBank.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<GetOfferDTO>> GetAllIds()
+        public async Task<ActionResult<GetOfferDTO>> GetAll()
         {
             var offers = await _serviceManager.OfferService.GetAll();
             return Ok(offers);
