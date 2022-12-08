@@ -6,7 +6,7 @@ namespace LoaningBank.Domain.Entities
     {
         public string FirstName { get; set; } = default!;
         public string LastName { get; set; } = default!;
-        public string GovernmentID { get; set; } = default!;
-        public GovernmentIdType GovernmentIDType { get; set; }
+        public string GovernmentId { get; set; } = default!;
+        public GovernmentIdType GovernmentIdType { get; set; }
     }
 }

@@ -19,6 +19,13 @@ namespace LoaningBank.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o => o.AddPolicy("Default", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
             services.AddDbContext<RepositoryDbContext>(conf =>
                 conf.UseSqlServer(ConfigurationsManager.DbConnectionString));
 
@@ -42,6 +49,8 @@ namespace LoaningBank.Web
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("Default");
 
             app.UseRouting();
 

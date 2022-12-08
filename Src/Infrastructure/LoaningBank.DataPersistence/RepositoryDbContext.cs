@@ -22,8 +22,8 @@ namespace LoaningBank.DataPersistence
                 {
                     pd.Property(y => y.FirstName).HasColumnName("DebtorFirstName");
                     pd.Property(y => y.LastName).HasColumnName("DebtorLastName");
-                    pd.Property(y => y.GovernmentID).HasColumnName("DebtorGovernmentId");
-                    pd.Property(y => y.GovernmentIDType).HasColumnName("DebtorGovernmentIdType");
+                    pd.Property(y => y.GovernmentId).HasColumnName("DebtorGovernmentId");
+                    pd.Property(y => y.GovernmentIdType).HasColumnName("DebtorGovernmentIdType");
                 });
 
             modelBuilder.Entity<Inquiry>()
