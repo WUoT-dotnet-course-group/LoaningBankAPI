@@ -4,7 +4,7 @@ namespace LoaningBank.Services.Abstract
 {
     public interface IOfferService
     {
-        Task Add(AddOfferDTO offer);
+        Task Add(string inquiryId);
         Task<List<GetOfferDTO>> GetAll();
     }
 }

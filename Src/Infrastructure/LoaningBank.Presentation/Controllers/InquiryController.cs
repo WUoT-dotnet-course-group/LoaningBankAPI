@@ -17,6 +17,9 @@ namespace LoaningBank.Presentation.Controllers
         public async Task<ActionResult<CreateInquiryResponse>> Add([FromBody] CreateInquiryRequest request)
         {
             var response = await _serviceManager.InquiryService.Add(request);
+
+            await _serviceManager.OfferService.Add(response.InquiryId);
+
             return Ok(response);
         }
 
