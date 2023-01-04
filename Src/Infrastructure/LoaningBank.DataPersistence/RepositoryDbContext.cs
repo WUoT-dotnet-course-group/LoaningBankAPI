@@ -20,10 +20,14 @@ namespace LoaningBank.DataPersistence
                 x => x.PersonalData,
                 pd =>
                 {
-                    pd.Property(y => y.FirstName).HasColumnName("DebtorFirstName");
-                    pd.Property(y => y.LastName).HasColumnName("DebtorLastName");
-                    pd.Property(y => y.GovernmentId).HasColumnName("DebtorGovernmentId");
-                    pd.Property(y => y.GovernmentIdType).HasColumnName("DebtorGovernmentIdType");
+                    pd.Property(y => y.FirstName).HasColumnName("Debtor_FirstName");
+                    pd.Property(y => y.LastName).HasColumnName("Debtor_LastName");
+                    pd.Property(y => y.BirthDate).HasColumnName("Debtor_BirthDate");
+                    pd.Property(y => y.GovernmentId).HasColumnName("Debtor_GovernmentId");
+                    pd.Property(y => y.GovernmentIdType).HasColumnName("Debtor_GovernmentIdType");
+                    pd.Property(y => y.JobType).HasColumnName("Debtor_JobType");
+                    pd.Property(y => y.JobStartDate).HasColumnName("Debtor_JobStartDate");
+                    pd.Property(y => y.JobEndDate).HasColumnName("Debtor_JobEndDate");
                 });
 
             modelBuilder.Entity<Inquiry>()
