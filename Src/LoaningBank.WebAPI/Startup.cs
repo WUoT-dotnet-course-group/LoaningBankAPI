@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using LoaningBank.Services.Abstract;
 using LoaningBank.Services;
 using LoaningBank.WebAPI.Configuration;
+using Mapster;
+using MapsterMapper;
 
 namespace LoaningBank.Web
 {
@@ -31,6 +33,11 @@ namespace LoaningBank.Web
 
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+
+            var mappingConfig = TypeAdapterConfig.GlobalSettings;
+            mappingConfig.Scan(typeof(Services.Mapping.AssemblyReference).Assembly);
+            services.AddSingleton(mappingConfig);
+            services.AddScoped<IMapper, ServiceMapper>();
 
             services.AddControllers()
                 .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
