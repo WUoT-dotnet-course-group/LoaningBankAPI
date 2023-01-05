@@ -6,6 +6,6 @@ namespace LoaningBank.Services.Abstract
     public interface IInquiryService
     {
         Task<CreateInquiryResponse> Add(CreateInquiryRequest request);
-        Task<GetInquiryResponse> GetById(string id);
+        Task<GetInquiryResponse> GetById(string inquiryId);
     }
 }
