@@ -7,6 +7,6 @@ namespace LoaningBank.Domain.Entities
         public Guid ID { get; set; }
         public OfferStatus Status { get; set; }
         public Guid InquiryID { get; set; }
-        public Inquiry Inquiry { get; set; } = default!;
+        public virtual Inquiry Inquiry { get; set; } = default!;
     }
 }
