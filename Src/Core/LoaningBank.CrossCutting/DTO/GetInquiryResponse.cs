@@ -15,5 +15,8 @@ namespace LoaningBank.CrossCutting.DTO
 
         [JsonPropertyName("statusId")]
         public OfferStatus OfferStatus { get; set; }
+
+        [JsonPropertyName("statusDescription")]
+        public string OfferStatusDescription { get; set; } = default!;
     }
 }

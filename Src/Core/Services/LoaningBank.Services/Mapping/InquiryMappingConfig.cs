@@ -29,7 +29,8 @@ namespace LoaningBank.Services.Mapping
 
             config.NewConfig<Inquiry, GetInquiryResponse>()
                 .Map(dest => dest.OfferId, src => GetOfferId(src))
-                .Map(dest => dest.OfferStatus, src => GetOfferStatus(src));
+                .Map(dest => dest.OfferStatus, src => GetOfferStatus(src))
+                .Map(dest => dest.OfferStatusDescription, src => GetOfferStatusDescription(src));
         }
 
         private static Guid? GetOfferId(Inquiry inquiry) => inquiry.Offer switch
@@ -43,5 +44,12 @@ namespace LoaningBank.Services.Mapping
             null => OfferStatus.Unknown,
             _ => inquiry.Offer.Status,
         };
+
+        private static string GetOfferStatusDescription(Inquiry inquiry) 
+            => EnumExtension.GetEnumDescription(inquiry.Offer switch
+            {
+                null => OfferStatus.Unknown,
+                _ => inquiry.Offer.Status,
+            });
     }
 }
