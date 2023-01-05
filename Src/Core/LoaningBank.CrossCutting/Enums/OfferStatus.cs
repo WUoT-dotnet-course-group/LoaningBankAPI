@@ -1,9 +1,13 @@
+using System.ComponentModel;
+
 namespace LoaningBank.CrossCutting.Enums
 {
     public enum OfferStatus
     {
-        Pending,
-        Accepted,
-        Declined,
+        Unknown = 0,
+        Uncompleted = 1,
+        Pending = 2,
+        Accepted = 3,
+        Declined = 4,
     }
 }

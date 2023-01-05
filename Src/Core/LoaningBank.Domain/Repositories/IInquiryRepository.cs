@@ -4,7 +4,7 @@ namespace LoaningBank.Domain.Repositories
 {
     public interface IInquiryRepository
     {
-        Task Add(Inquiry inquiry);
+        Task<Inquiry> Add(Inquiry inquiry);
         Task<List<Inquiry>> GetAll();
     }
 }

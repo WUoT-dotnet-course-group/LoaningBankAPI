@@ -1,0 +1,59 @@
+﻿using System.ComponentModel;
+
+namespace LoaningBank.CrossCutting.Enums
+{
+    public enum JobType
+    {
+        [Description("Director")]
+        Director,
+        [Description("Agent")]
+        Agent,
+        [Description("Administrator")]
+        Administrator,
+        [Description("Coordinator")]
+        Coordinator,
+        [Description("Specialist")]
+        Specialist,
+        [Description("Orchestrator")]
+        Orchestrator,
+        [Description("Assistant")]
+        Assistant,
+        [Description("Designer")]
+        Designer,
+        [Description("Facilitator")]
+        Facilitator,
+        [Description("Analyst")]
+        Analyst,
+        [Description("Producer")]
+        Producer,
+        [Description("Technician")]
+        Technician,
+        [Description("Manager")]
+        Manager,
+        [Description("Liaison")]
+        Liaison,
+        [Description("Associate")]
+        Associate,
+        [Description("Consultant")]
+        Consultant,
+        [Description("Engineer")]
+        Engineer,
+        [Description("Strategist")]
+        Strategist,
+        [Description("Supervisor")]
+        Supervisor,
+        [Description("Executive")]
+        Executive,
+        [Description("Planner")]
+        Planner,
+        [Description("Developer")]
+        Developer,
+        [Description("Officer")]
+        Officer,
+        [Description("Architect")]
+        Architect,
+        [Description("Representative")]
+        Representative,
+    }
+}
+

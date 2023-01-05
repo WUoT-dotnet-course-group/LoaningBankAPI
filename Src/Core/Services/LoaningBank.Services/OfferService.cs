@@ -13,10 +13,13 @@ namespace LoaningBank.Services
 
         public OfferService(IRepositoryManager repositoryManager) => _repositoryManager = repositoryManager;
     
-        public async Task Add(AddOfferDTO offer)
+        public async Task Add(string inquiryId)
         {
-            var offerToAdd = offer.Adapt<Offer>();
-            offerToAdd.Status = OfferStatus.Pending;
+            var offerToAdd = new Offer
+            {
+                InquiryID = Guid.Parse(inquiryId),
+                Status = OfferStatus.Pending
+            };
 
             await _repositoryManager.OfferRepository.Add(offerToAdd);
         }

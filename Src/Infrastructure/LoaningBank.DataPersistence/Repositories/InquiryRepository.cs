@@ -10,10 +10,11 @@ namespace LoaningBank.DataPersistence.Repositories
 
         public InquiryRepository(RepositoryDbContext dbContext) => _dbContext = dbContext;
 
-        public async Task Add(Inquiry inquiry)
+        public async Task<Inquiry> Add(Inquiry inquiry)
         {
-            await _dbContext.Inquiries.AddAsync(inquiry);
+            var result = await _dbContext.Inquiries.AddAsync(inquiry);
             await _dbContext.SaveChangesAsync();
+            return result.Entity;
         }
 
         public async Task<List<Inquiry>> GetAll() => await _dbContext.Inquiries.AsNoTracking().ToListAsync();

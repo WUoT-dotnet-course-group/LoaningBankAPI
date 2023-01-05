@@ -12,19 +12,11 @@ namespace LoaningBank.Presentation.Controllers
 
         public OfferController(IServiceManager serviceManager) => _serviceManager = serviceManager;
 
-        [HttpPost("add")]
-        public async Task<ActionResult> Add([FromBody] AddOfferDTO offer)
-        {
-            await _serviceManager.OfferService.Add(offer);
-            return Ok();
-        }
-
         [HttpGet]
         public async Task<ActionResult<GetOfferDTO>> GetAll()
         {
             var offers = await _serviceManager.OfferService.GetAll();
             return Ok(offers);
         }
-
     }
 }
