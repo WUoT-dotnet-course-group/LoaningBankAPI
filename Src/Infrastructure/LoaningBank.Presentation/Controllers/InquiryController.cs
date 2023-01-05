@@ -23,11 +23,11 @@ namespace LoaningBank.Presentation.Controllers
             return Ok(response);
         }
 
-        [HttpGet]
-        public async Task<ActionResult<GetInquiryDTO>> GetAll()
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GetInquiryResponse>> GetById(string id)
         {
-            var inquiries = await _serviceManager.InquiryService.GetAll();
-            return Ok(inquiries);
+            var inquiry = await _serviceManager.InquiryService.GetById(id);
+            return Ok(inquiry);
         }
     }
 }

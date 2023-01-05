@@ -22,11 +22,11 @@ namespace LoaningBank.Services
             return inqiry.Adapt<CreateInquiryResponse>();
         }
 
-        public async Task<List<GetInquiryDTO>> GetAll()
+        public async Task<GetInquiryResponse> GetById(string id)
         {
-            var inquiries = await _repositoryManager.InquiryRepository.GetAll();
+            var inquiry = await _repositoryManager.InquiryRepository.GetById(Guid.Parse(id));
 
-            return inquiries.Adapt<List<GetInquiryDTO>>();
+            return inquiry.Adapt<GetInquiryResponse>();
         }
     }
 }
