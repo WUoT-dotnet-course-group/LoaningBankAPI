@@ -7,6 +7,6 @@
         public short NumberOfInstallments { get; set; }
         public DateTime InquireDate { get; set; }
         public PersonalData PersonalData { get; set; } = default!;
-        public Offer? Offer { get; set; }
+        public virtual Offer? Offer { get; set; }
     }
 }

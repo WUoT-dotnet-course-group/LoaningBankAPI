@@ -18,16 +18,16 @@ namespace LoaningBank.Presentation.Controllers
         {
             var response = await _serviceManager.InquiryService.Add(request);
 
-            await _serviceManager.OfferService.Add(response.InquiryId);
+            await _serviceManager.OfferService.Add(response.InquiryId, request);
 
             return Ok(response);
         }
 
-        [HttpGet]
-        public async Task<ActionResult<GetInquiryDTO>> GetAll()
+        [HttpGet("{inquiryId}")]
+        public async Task<ActionResult<GetInquiryResponse>> GetById(string inquiryId)
         {
-            var inquiries = await _serviceManager.InquiryService.GetAll();
-            return Ok(inquiries);
+            var inquiry = await _serviceManager.InquiryService.GetById(inquiryId);
+            return Ok(inquiry);
         }
     }
 }

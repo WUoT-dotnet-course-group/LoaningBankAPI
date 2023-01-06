@@ -1,4 +1,5 @@
 ﻿using LoaningBank.CrossCutting.DTO;
+using LoaningBank.CrossCutting.DTO.LoaningBank;
 using LoaningBank.CrossCutting.Enums;
 using LoaningBank.Domain.Entities;
 using LoaningBank.Domain.Repositories;
@@ -13,21 +14,31 @@ namespace LoaningBank.Services
 
         public OfferService(IRepositoryManager repositoryManager) => _repositoryManager = repositoryManager;
     
-        public async Task Add(string inquiryId)
+        public async Task Add(string inquiryId, CreateInquiryRequest inquiryData)
         {
+            var rand = new Random(inquiryId.GetHashCode());
+
+            var percentage = (float)rand.Next(1000) / 100;
+
             var offerToAdd = new Offer
             {
+                LoanValue = inquiryData.LoanValue,
+                LoanPeriod = inquiryData.NumberOfInstallments,
+                Status = OfferStatus.Pending,
+                Percentage = percentage,
+                MonthlyInstallment = (float)inquiryData.LoanValue / inquiryData.NumberOfInstallments * (1 + percentage / 100),
+                DocumentLink = "",
+                DocumentLinkValidDate = DateTime.MaxValue,
                 InquiryID = Guid.Parse(inquiryId),
-                Status = OfferStatus.Pending
             };
 
             await _repositoryManager.OfferRepository.Add(offerToAdd);
         }
 
-        public async Task<List<GetOfferDTO>> GetAll()
+        public async Task<GetOfferResponse> GetById(string offerId)
         {
-            var offers = await _repositoryManager.OfferRepository.GetAll();
-            return offers.Adapt<List<GetOfferDTO>>();
+            var offer = await _repositoryManager.OfferRepository.GetById(Guid.Parse(offerId));
+            return offer.Adapt<GetOfferResponse>();
         }
     }
 }

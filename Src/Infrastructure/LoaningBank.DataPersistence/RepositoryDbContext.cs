@@ -33,6 +33,10 @@ namespace LoaningBank.DataPersistence
             modelBuilder.Entity<Inquiry>()
                 .Property(x => x.InquireDate)
                 .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<Offer>()
+                .Property(x => x.CreateDate)
+                .HasDefaultValueSql("getdate()");
         }
     }
 }

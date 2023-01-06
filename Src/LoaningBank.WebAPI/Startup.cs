@@ -29,7 +29,7 @@ namespace LoaningBank.Web
             }));
 
             services.AddDbContext<RepositoryDbContext>(conf =>
-                conf.UseSqlServer(ConfigurationsManager.DbConnectionString));
+                conf.UseLazyLoadingProxies().UseSqlServer(ConfigurationsManager.DbConnectionString));
 
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();

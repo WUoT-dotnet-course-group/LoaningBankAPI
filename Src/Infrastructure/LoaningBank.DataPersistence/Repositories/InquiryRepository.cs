@@ -17,6 +17,6 @@ namespace LoaningBank.DataPersistence.Repositories
             return result.Entity;
         }
 
-        public async Task<List<Inquiry>> GetAll() => await _dbContext.Inquiries.AsNoTracking().ToListAsync();
+        public async Task<Inquiry> GetById(Guid id) => await _dbContext.Inquiries.SingleAsync(x => x.ID == id);
     }
 }
