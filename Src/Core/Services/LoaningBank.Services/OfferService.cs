@@ -35,9 +35,9 @@ namespace LoaningBank.Services
             await _repositoryManager.OfferRepository.Add(offerToAdd);
         }
 
-        public async Task<GetOfferResponse> GetById(string offerId)
+        public async Task<GetOfferResponse> GetById(Guid offerId)
         {
-            var offer = await _repositoryManager.OfferRepository.GetById(Guid.Parse(offerId));
+            var offer = await _repositoryManager.OfferRepository.GetById(offerId);
             return offer.Adapt<GetOfferResponse>();
         }
     }

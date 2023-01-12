@@ -6,6 +6,6 @@ namespace LoaningBank.Services.Abstract
     public interface IOfferService
     {
         Task Add(string inquiryId, CreateInquiryRequest inquiryData);
-        Task<GetOfferResponse> GetById(string offerId);
+        Task<GetOfferResponse> GetById(Guid offerId);
     }
 }

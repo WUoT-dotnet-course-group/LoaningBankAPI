@@ -4,7 +4,7 @@ namespace LoaningBank.Domain.Repositories
 {
     public interface IOfferRepository
     {
-        Task Add(Offer offer);
+        Task<Guid> Add(Offer offer);
         Task<Offer> GetById(Guid id);
     }
 }
