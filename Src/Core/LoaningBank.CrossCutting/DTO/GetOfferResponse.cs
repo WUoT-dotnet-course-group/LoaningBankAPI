@@ -26,7 +26,7 @@ namespace LoaningBank.CrossCutting.DTO
         public DateTime CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public string? ApprovedBy { get; set; }
-        public string DocumentLink { get; set; } = default!;
-        public DateTime DocumentLinkValidDate { get; set; }
+        public string? DocumentLink { get; set; }
+        public DateTime? DocumentLinkValidDate { get; set; }
     }
 }
