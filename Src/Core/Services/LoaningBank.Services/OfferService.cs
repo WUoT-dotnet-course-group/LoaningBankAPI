@@ -30,7 +30,7 @@ namespace LoaningBank.Services
             {
                 LoanValue = inquiryData.LoanValue,
                 LoanPeriod = inquiryData.NumberOfInstallments,
-                Status = OfferStatus.Pending,
+                Status = OfferStatus.Uncompleted,
                 Percentage = percentage,
                 MonthlyInstallment = (float)inquiryData.LoanValue / inquiryData.NumberOfInstallments * (1 + percentage / 100),
                 DocumentLinkValidDate = DateTime.Now.AddHours(1),
@@ -95,5 +95,7 @@ namespace LoaningBank.Services
         }
 
         public async Task<Guid> GetDocumentKey(Guid offerId) => await _repositoryManager.OfferRepository.GetDocumentKey(offerId);
+
+        public async Task SetStatus(Guid offerId, OfferStatus status) => await _repositoryManager.OfferRepository.SetStatus(offerId, status);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LoaningBank.CrossCutting.DTO;
 using LoaningBank.CrossCutting.DTO.LoaningBank;
+using LoaningBank.CrossCutting.Enums;
 
 namespace LoaningBank.Services.Abstract
 {
@@ -9,5 +10,6 @@ namespace LoaningBank.Services.Abstract
         Task<GetOfferResponse> GetById(Guid offerId);
         Task<Guid> GetDocumentKey(Guid offerId);
         Task GenerateDocument(Guid offerId);
+        Task SetStatus(Guid offerId, OfferStatus status);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LoaningBank.CrossCutting.DTO;
+using LoaningBank.CrossCutting.Enums;
 using LoaningBank.Services.Abstract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,11 @@ namespace LoaningBank.Presentation.Controllers
         public async Task<ActionResult> UploadDocument([FromForm] IFormFile file, Guid offerId)
         {
             var key = await _serviceManager.OfferService.GetDocumentKey(offerId);
+
             await _serviceManager.FileService.UploadFile(file.OpenReadStream(), $"{offerId}_{key}.txt");
+
+            await _serviceManager.OfferService.SetStatus(offerId, OfferStatus.Pending);
+
             return Ok();
         }
 

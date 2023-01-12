@@ -1,4 +1,5 @@
-﻿using LoaningBank.Domain.Entities;
+﻿using LoaningBank.CrossCutting.Enums;
+using LoaningBank.Domain.Entities;
 using LoaningBank.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +24,13 @@ namespace LoaningBank.DataPersistence.Repositories
         {
             var offer = await _dbContext.Offers.Select(x => new { x.ID, x.DocumentKey }).SingleAsync(x => x.ID == offerId);
             return offer.DocumentKey;
+        }
+
+        public async Task SetStatus(Guid offerId, OfferStatus status)
+        {
+            var offer = await _dbContext.Offers.SingleAsync(x => x.ID == offerId);
+            offer.Status = status;
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
