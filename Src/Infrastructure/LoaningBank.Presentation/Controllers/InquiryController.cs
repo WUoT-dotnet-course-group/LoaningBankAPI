@@ -18,7 +18,9 @@ namespace LoaningBank.Presentation.Controllers
         {
             var response = await _serviceManager.InquiryService.Add(request);
 
-            await _serviceManager.OfferService.Add(response.InquiryId, request);
+            var offerId = await _serviceManager.OfferService.Add(response.InquiryId, request);
+
+            await _serviceManager.OfferService.GenerateDocument(offerId);
 
             return Ok(response);
         }

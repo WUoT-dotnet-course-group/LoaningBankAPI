@@ -10,12 +10,19 @@ namespace LoaningBank.DataPersistence.Repositories
 
         public OfferRepository(RepositoryDbContext dbContext) => _dbContext = dbContext;
 
-        public async Task Add(Offer offer)
+        public async Task<Guid> Add(Offer offer)
         {
-            await _dbContext.Offers.AddAsync(offer);
+            var result = await _dbContext.Offers.AddAsync(offer);
             await _dbContext.SaveChangesAsync();
+            return result.Entity.ID;
         }
 
         public async Task<Offer> GetById(Guid id) => await _dbContext.Offers.SingleAsync(x => x.ID == id);
+
+        public async Task<Guid> GetDocumentKey(Guid offerId)
+        {
+            var offer = await _dbContext.Offers.Select(x => new { x.ID, x.DocumentKey }).SingleAsync(x => x.ID == offerId);
+            return offer.DocumentKey;
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace LoaningBank.Services
         public ServiceManager(IRepositoryManager repositoryManager, BlobServiceClient blobService, IServicesConfiguration configuration)
         {
             _lazyInquiryService = new Lazy<IInquiryService>(() => new InquiryService(repositoryManager));
-            _lazyOfferService = new Lazy<IOfferService>(() => new OfferService(repositoryManager));
+            _lazyOfferService = new Lazy<IOfferService>(() => new OfferService(repositoryManager, this));
             _lazyFileService = new Lazy<IFileService>(() => new FileService(blobService.GetBlobContainerClient(configuration.BlobContainerName)));
         }
 

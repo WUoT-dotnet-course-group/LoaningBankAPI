@@ -6,5 +6,6 @@ namespace LoaningBank.Domain.Repositories
     {
         Task<Guid> Add(Offer offer);
         Task<Offer> GetById(Guid id);
+        Task<Guid> GetDocumentKey(Guid offerId);
     }
 }

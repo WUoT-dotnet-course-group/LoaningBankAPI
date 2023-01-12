@@ -27,5 +27,18 @@ namespace LoaningBank.Presentation.Controllers
             await _serviceManager.FileService.UploadFile(file.OpenReadStream(), $"{offerId}_{key}.txt");
             return Ok();
         }
+
+        [HttpGet("{offerId}/document/{key}")]
+        public async Task<ActionResult> DownloadDocument(string offerId, Guid key)
+        {
+            var fileStream = await _serviceManager.FileService.DownloadFile($"{offerId}_{key}.txt");
+
+            if (fileStream != Stream.Null)
+            {
+                return File(fileStream, "text/plain", fileDownloadName: "arrangement.txt");
+            }
+
+            return Unauthorized();
+        }
     }
 }

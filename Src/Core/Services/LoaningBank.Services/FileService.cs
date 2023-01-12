@@ -17,5 +17,19 @@ namespace LoaningBank.Services
             var blobClient = _blobContainerClient.GetBlobClient(filename);
             await blobClient.UploadAsync(fileStream, overwrite: true);
         }
+
+        public async Task<Stream> DownloadFile(string filename)
+        {
+            var blobClient = _blobContainerClient.GetBlobClient(filename);
+            try
+            {
+                var content = await blobClient.DownloadAsync();
+                return content.Value.Content; 
+            }
+            catch(Exception)
+            {
+                return Stream.Null;
+            }
+        }
     }
 }
