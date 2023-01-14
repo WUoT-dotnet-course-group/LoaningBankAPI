@@ -7,6 +7,7 @@ using LoaningBank.Services;
 using LoaningBank.WebAPI.Configuration;
 using Mapster;
 using MapsterMapper;
+using Azure.Storage.Blobs;
 
 namespace LoaningBank.Web
 {
@@ -29,10 +30,13 @@ namespace LoaningBank.Web
             }));
 
             services.AddDbContext<RepositoryDbContext>(conf =>
-                conf.UseLazyLoadingProxies().UseSqlServer(ConfigurationsManager.DbConnectionString));
+                conf.UseLazyLoadingProxies().UseSqlServer(ConfigurationsManager.DatabaseConnectionString));
+
+            services.AddScoped(_ => new BlobServiceClient(ConfigurationsManager.BlobStorageConnectionString));
 
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+            services.AddScoped<IServicesConfiguration, ConfigurationsManager>();
 
             var mappingConfig = TypeAdapterConfig.GlobalSettings;
             mappingConfig.Scan(typeof(Services.Mapping.AssemblyReference).Assembly);

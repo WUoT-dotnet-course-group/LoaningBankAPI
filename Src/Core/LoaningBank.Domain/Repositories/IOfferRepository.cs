@@ -1,10 +1,13 @@
-﻿using LoaningBank.Domain.Entities;
+﻿using LoaningBank.CrossCutting.Enums;
+using LoaningBank.Domain.Entities;
 
 namespace LoaningBank.Domain.Repositories
 {
     public interface IOfferRepository
     {
-        Task Add(Offer offer);
+        Task<Guid> Add(Offer offer);
         Task<Offer> GetById(Guid id);
+        Task<Guid> GetDocumentKey(Guid offerId);
+        Task SetStatus(Guid offerId, OfferStatus status);
     }
 }

@@ -5,5 +5,7 @@
         IInquiryService InquiryService { get; }
 
         IOfferService OfferService { get; }
+
+        IFileService FileService { get; }
     }
 }
