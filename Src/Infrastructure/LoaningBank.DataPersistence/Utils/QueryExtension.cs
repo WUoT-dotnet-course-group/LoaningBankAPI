@@ -1,6 +1,6 @@
 ﻿using LoaningBank.CrossCutting.DTO;
+using LoaningBank.CrossCutting.Enums;
 using LoaningBank.CrossCutting.Utils;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
