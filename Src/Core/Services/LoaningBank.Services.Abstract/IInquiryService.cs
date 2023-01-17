@@ -7,5 +7,6 @@ namespace LoaningBank.Services.Abstract
     {
         Task<CreateInquiryResponse> Add(CreateInquiryRequest request);
         Task<GetInquiryResponse> GetById(string inquiryId);
+        Task<PaginatedResponse<GetInquiryDetailsResponse>> Get(PagingParameter pagingParams);
     }
 }

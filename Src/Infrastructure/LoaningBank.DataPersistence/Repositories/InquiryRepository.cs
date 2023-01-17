@@ -1,4 +1,7 @@
-﻿using LoaningBank.Domain.Entities;
+﻿using LoaningBank.CrossCutting.DTO;
+using LoaningBank.CrossCutting.Enums;
+using LoaningBank.DataPersistence.Utils;
+using LoaningBank.Domain.Entities;
 using LoaningBank.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,5 +21,17 @@ namespace LoaningBank.DataPersistence.Repositories
         }
 
         public async Task<Inquiry> GetById(Guid id) => await _dbContext.Inquiries.SingleAsync(x => x.ID == id);
+
+        public async Task<PaginatedResponse<InquirySearch>> Get<TResult>(int pageIndex, int pageSize, SortOrder sortOrder, string sortHeader)
+        {
+            var query = _dbContext.InquirySearch.AsQueryable();
+
+            if (sortOrder is not SortOrder.Undefined)
+            {
+                query = query.Sort<TResult, InquirySearch>(sortOrder, sortHeader);
+            }
+
+            return await query.Paginate(pageIndex, pageSize);
+        }
     }
 }

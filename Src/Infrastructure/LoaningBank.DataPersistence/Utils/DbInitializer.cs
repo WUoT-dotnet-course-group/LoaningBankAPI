@@ -1,4 +1,4 @@
-﻿namespace LoaningBank.DataPersistence
+﻿namespace LoaningBank.DataPersistence.Utils
 {
     public static class DbInitializer
     {

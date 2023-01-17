@@ -12,6 +12,7 @@ namespace LoaningBank.DataPersistence
 
         public DbSet<Inquiry> Inquiries { get; set; }
         public DbSet<Offer> Offers { get; set; }
+        public DbSet<InquirySearch> InquirySearch { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,6 +46,10 @@ namespace LoaningBank.DataPersistence
             modelBuilder.Entity<Offer>()
                 .Property(x => x.DocumentKey)
                 .HasDefaultValueSql("newid()");
+
+            modelBuilder.Entity<InquirySearch>()
+                .ToView(nameof(InquirySearch))
+                .HasKey(x => x.InquiryID);
         }
     }
 }

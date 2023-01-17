@@ -31,5 +31,12 @@ namespace LoaningBank.Presentation.Controllers
             var inquiry = await _serviceManager.InquiryService.GetById(inquiryId);
             return Ok(inquiry);
         }
+
+        [HttpGet]
+        public async Task<ActionResult<PaginatedResponse<GetInquiryDetailsResponse>>> Get([FromQuery] PagingParameter pagingParams)
+        {
+            var inquiries = await _serviceManager.InquiryService.Get(pagingParams);
+            return Ok(inquiries);
+        }
     }
 }
