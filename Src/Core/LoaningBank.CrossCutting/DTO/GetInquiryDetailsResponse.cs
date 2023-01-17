@@ -1,4 +1,5 @@
-﻿using LoaningBank.CrossCutting.Utils;
+﻿using LoaningBank.CrossCutting.Enums;
+using LoaningBank.CrossCutting.Utils;
 
 namespace LoaningBank.CrossCutting.DTO
 {
@@ -19,9 +20,11 @@ namespace LoaningBank.CrossCutting.DTO
         [EntityPropertyName("InquireDate")]
         public DateTime InquireDate { get; set; }
 
+        public OfferStatus Status { get; set; }
+
         [SortHeader("status")]
         [EntityPropertyName("Status")]
-        public string Status { get; set; } = default!;
+        public string StatusDescription { get; set; } = default!;
 
         [SortHeader("percentage")]
         [EntityPropertyName("Percentage")]

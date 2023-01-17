@@ -33,7 +33,7 @@ namespace LoaningBank.Services.Mapping
                 .Map(dest => dest.OfferStatusDescription, src => GetOfferStatusDescription(src));
 
             config.NewConfig<InquirySearch, GetInquiryDetailsResponse>()
-                .Map(dest => dest.Status, src => src.Status.GetValueOrDefault().GetEnumDescription());
+                .Map(dest => dest.StatusDescription, src => src.Status.GetValueOrDefault().GetEnumDescription());
         }
 
         private static Guid? GetOfferId(Inquiry inquiry) => inquiry.Offer switch
