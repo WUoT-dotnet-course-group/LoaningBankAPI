@@ -6,6 +6,7 @@ namespace LoaningBank.WebAPI.Configuration
     {
         private readonly DatabaseConfig _databaseConfig;
         private readonly BlobStorageConfig _blobStorageConfig;
+        private readonly AuthConfig _authConfig;
 
         public readonly IConfiguration Configuration;
 
@@ -14,6 +15,7 @@ namespace LoaningBank.WebAPI.Configuration
             Configuration = configuration;
             _databaseConfig = Configuration.GetRequiredSection(DatabaseConfig.SectionName).Get<DatabaseConfig>();
             _blobStorageConfig = Configuration.GetRequiredSection(BlobStorageConfig.SectionName).Get<BlobStorageConfig>();
+            _authConfig = Configuration.GetRequiredSection(AuthConfig.SectionName).Get<AuthConfig>();
         }
 
         public string DatabaseConnectionString
@@ -37,5 +39,11 @@ namespace LoaningBank.WebAPI.Configuration
         }
 
         public string BlobContainerName => _blobStorageConfig.ContainerName;
+
+        public string AuthSecretKey => _authConfig.AuthSecretKey;
+
+        public KeyValuePair<string, string> AdminClientCredentails => new(_authConfig.AdminClientId, _authConfig.AdminClientSecret);
+
+        public KeyValuePair<string, string> ClientCredentails => new(_authConfig.ClientId, _authConfig.ClientSecret);
     }
 }
