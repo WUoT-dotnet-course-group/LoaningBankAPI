@@ -45,5 +45,19 @@ namespace LoaningBank.Presentation.Controllers
 
             return Unauthorized();
         }
+
+        [HttpPatch("{offerId}/accept")]
+        public async Task<ActionResult> AcceptOffer(Guid offerId)
+        {
+            await _serviceManager.OfferService.SetStatus(offerId, OfferStatus.Accepted);
+            return Ok();
+        }
+
+        [HttpPatch("{offerId}/reject")]
+        public async Task<ActionResult> RejectOffer(Guid offerId)
+        {
+            await _serviceManager.OfferService.SetStatus(offerId, OfferStatus.Declined);
+            return Ok();
+        }
     }
 }
