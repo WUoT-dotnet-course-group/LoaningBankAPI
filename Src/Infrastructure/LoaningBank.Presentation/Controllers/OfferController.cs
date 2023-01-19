@@ -1,12 +1,14 @@
 ﻿using LoaningBank.CrossCutting.DTO;
 using LoaningBank.CrossCutting.Enums;
 using LoaningBank.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoaningBank.Presentation.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/offers")]
     public class OfferController : ControllerBase
     {
@@ -47,6 +49,7 @@ namespace LoaningBank.Presentation.Controllers
         }
 
         [HttpPatch("{offerId}/accept")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AcceptOffer(Guid offerId)
         {
             await _serviceManager.OfferService.SetStatus(offerId, OfferStatus.Accepted);
@@ -54,6 +57,7 @@ namespace LoaningBank.Presentation.Controllers
         }
 
         [HttpPatch("{offerId}/reject")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> RejectOffer(Guid offerId)
         {
             await _serviceManager.OfferService.SetStatus(offerId, OfferStatus.Declined);

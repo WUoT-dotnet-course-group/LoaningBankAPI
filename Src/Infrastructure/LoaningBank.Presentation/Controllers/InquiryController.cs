@@ -1,11 +1,13 @@
 ﻿using LoaningBank.CrossCutting.DTO;
 using LoaningBank.CrossCutting.DTO.LoaningBank;
 using LoaningBank.Services.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoaningBank.Presentation.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/inquiries")]
     public class InquiryController : ControllerBase
     {
@@ -33,6 +35,7 @@ namespace LoaningBank.Presentation.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<PaginatedResponse<GetInquiryDetailsResponse>>> Get([FromQuery] PagingParameter pagingParams)
         {
             var inquiries = await _serviceManager.InquiryService.Get(pagingParams);
