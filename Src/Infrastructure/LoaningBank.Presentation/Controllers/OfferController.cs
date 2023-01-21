@@ -24,7 +24,7 @@ namespace LoaningBank.Presentation.Controllers
         }
 
         [HttpPost("{offerId}/upload")]
-        public async Task<ActionResult> UploadDocument([FromForm] IFormFile file, Guid offerId)
+        public async Task<ActionResult> UploadDocument(IFormFile file, Guid offerId)
         {
             var key = await _serviceManager.OfferService.GetDocumentKey(offerId);
 
@@ -35,6 +35,7 @@ namespace LoaningBank.Presentation.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpGet("{offerId}/document/{key}")]
         public async Task<ActionResult> DownloadDocument(string offerId, Guid key)
         {
