@@ -4,7 +4,7 @@
     {
         public static string SectionName => "Auth";
 
-        public string AuthSecretKey { get; set; } = default!;
+        public string SecretKey { get; set; } = default!;
         public string AdminClientId { get; set; } = default!;
         public string AdminClientSecret { get; set; } = default!;
         public string ClientId { get; set; } = default!;

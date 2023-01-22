@@ -40,7 +40,7 @@ namespace LoaningBank.WebAPI.Configuration
 
         public string BlobContainerName => _blobStorageConfig.ContainerName;
 
-        public string AuthSecretKey => _authConfig.AuthSecretKey;
+        public string AuthSecretKey => _authConfig.SecretKey;
 
         public KeyValuePair<string, string> AdminClientCredentails => new(_authConfig.AdminClientId, _authConfig.AdminClientSecret);
 
