@@ -35,7 +35,6 @@ namespace LoaningBank.Presentation.Controllers
             return Ok();
         }
 
-        [AllowAnonymous]
         [HttpGet("{offerId}/document/{key}")]
         public async Task<ActionResult> DownloadDocument(string offerId, Guid key)
         {
