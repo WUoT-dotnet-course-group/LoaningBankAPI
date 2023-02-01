@@ -38,7 +38,7 @@ namespace LoaningBank.Services
             EnumExtension.TryGetEnumValue(sortOrderDesc, out SortOrder sortOrder);
 
             var paginatedInquiries = await _repositoryManager.InquiryRepository
-                .Get<GetInquiryDetailsResponse>(pagingParams.PageIndex, pagingParams.PageSize, sortOrder, sortHeader!);
+                .Get<GetInquiryDetailsResponse>(pagingParams.PageIndex, pagingParams.PageSize, sortOrder, sortHeader!, pagingParams.Filter ?? string.Empty);
 
             return paginatedInquiries.Adapt<PaginatedResponse<GetInquiryDetailsResponse>>();
         }
