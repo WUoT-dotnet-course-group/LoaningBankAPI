@@ -8,6 +8,6 @@ namespace LoaningBank.Domain.Repositories
     {
         Task<Inquiry> Add(Inquiry inquiry);
         Task<Inquiry> GetById(Guid id);
-        Task<PaginatedResponse<InquirySearch>> Get<TResult>(int pageIndex, int pageSize, SortOrder sortOrder, string sortHeader);
+        Task<PaginatedResponse<InquirySearch>> Get<TResult>(int pageIndex, int pageSize, SortOrder sortOrder, string sortHeader, string filter);
     }
 }
