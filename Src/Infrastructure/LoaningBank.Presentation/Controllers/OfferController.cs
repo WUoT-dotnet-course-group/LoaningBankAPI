@@ -50,17 +50,17 @@ namespace LoaningBank.Presentation.Controllers
 
         [HttpPatch("{offerId}/accept")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> AcceptOffer(Guid offerId)
+        public async Task<ActionResult> AcceptOffer(Guid offerId, [FromQuery] string approvedBy)
         {
-            await _serviceManager.OfferService.SetStatus(offerId, OfferStatus.Accepted);
+            await _serviceManager.OfferService.SetStatus(offerId, OfferStatus.Accepted, approvedBy);
             return Ok();
         }
 
         [HttpPatch("{offerId}/reject")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> RejectOffer(Guid offerId)
+        public async Task<ActionResult> RejectOffer(Guid offerId, [FromQuery] string approvedBy)
         {
-            await _serviceManager.OfferService.SetStatus(offerId, OfferStatus.Declined);
+            await _serviceManager.OfferService.SetStatus(offerId, OfferStatus.Declined, approvedBy);
             return Ok();
         }
     }

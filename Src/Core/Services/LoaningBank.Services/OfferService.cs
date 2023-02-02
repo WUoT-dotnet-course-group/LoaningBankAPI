@@ -96,6 +96,16 @@ namespace LoaningBank.Services
 
         public async Task<Guid> GetDocumentKey(Guid offerId) => await _repositoryManager.OfferRepository.GetDocumentKey(offerId);
 
-        public async Task SetStatus(Guid offerId, OfferStatus status) => await _repositoryManager.OfferRepository.SetStatus(offerId, status);
+        public async Task SetStatus(Guid offerId, OfferStatus status, string? employee = null)
+        {
+            if (employee is null)
+            {
+                await _repositoryManager.OfferRepository.SetStatus(offerId, status);
+            }
+            else
+            {
+                await _repositoryManager.OfferRepository.SetStatus(offerId, status, employee);
+            }
+        }
     }
 }
