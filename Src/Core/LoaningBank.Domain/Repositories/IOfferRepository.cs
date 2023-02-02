@@ -9,5 +9,6 @@ namespace LoaningBank.Domain.Repositories
         Task<Offer> GetById(Guid id);
         Task<Guid> GetDocumentKey(Guid offerId);
         Task SetStatus(Guid offerId, OfferStatus status);
+        Task SetStatus(Guid offerId, OfferStatus status, string employee);
     }
 }

@@ -4,7 +4,6 @@ using LoaningBank.DataPersistence.Utils;
 using LoaningBank.Domain.Entities;
 using LoaningBank.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System.Globalization;
 
 namespace LoaningBank.DataPersistence.Repositories
 {

@@ -32,5 +32,13 @@ namespace LoaningBank.DataPersistence.Repositories
             offer.Status = status;
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task SetStatus(Guid offerId, OfferStatus status, string employee)
+        {
+            var offer = await _dbContext.Offers.SingleAsync(x => x.ID == offerId);
+            offer.Status = status;
+            offer.ApprovedBy = employee;
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

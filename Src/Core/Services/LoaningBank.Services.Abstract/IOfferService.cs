@@ -10,6 +10,6 @@ namespace LoaningBank.Services.Abstract
         Task<GetOfferResponse> GetById(Guid offerId);
         Task<Guid> GetDocumentKey(Guid offerId);
         Task GenerateDocument(Guid offerId);
-        Task SetStatus(Guid offerId, OfferStatus status);
+        Task SetStatus(Guid offerId, OfferStatus status, string? employee = null);
     }
 }
